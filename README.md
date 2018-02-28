@@ -17,8 +17,8 @@ The following classads control where the submission goes:
 |Special classad|Description|
 |----------------|-----|
 |+site\_local| Run in the local resources of this batch system|
-|+local| Run on the local SiaB, if condor startd is enabled|
-|+uc| Run at all UC targets|
+|+local| Run on the local SiaB, if condor startd is enabled in the brick|
+|+uc| Run on all UC targets|
 |+sdsc| Run at Comet|
 
 *E.g*: To submit to UC Sites only, put the following in the submit file:
