@@ -1,0 +1,26 @@
+Universe = vanilla
+Executable = submit_xrootd.sh
+Error = log/job.err.$(Cluster)-$(Process)
+Output = log/job.out.$(Cluster)-$(Process)
+Log = log/job.log.$(Cluster)
+
+#x509userproxy = /tmp/x509up_u1017
+use_x509userproxy = true
+
+
+# Special classads
+# site_local: Submit to local resources in this scheduler
+# local: Submit to the brick
+# uc: Enable submission to UC targets
+# sdsc: Enable submission to SDSC/Comet
+
+#+site_local = False
+#+local = True
++uc = True
++sdsc = True
+
+# Submit to a specific site:
+# E.g: UCI,COLORADO,UCR,UCSD.
+#+SUBMIT_SITE = "UCI"
+
+Queue 1
