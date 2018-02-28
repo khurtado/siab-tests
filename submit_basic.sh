@@ -9,5 +9,5 @@ echo -e "\n---Worker node environment---"
 env
 echo -e "---end of environment---\n"
 
-sleep ${1-15}
+sleep ${1-5}
 echo "Science complete!"
