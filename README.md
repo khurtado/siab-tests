@@ -12,11 +12,11 @@ Note: The interactive test depends on the SiaB firewall configuration. Please, m
 Test condor submission. Submits to UC and Comet by default.
 The following classads control where the submission goes:
 
-|Special classads|
+|Special classads||
 |site\_local| Submit to local resources in this scheduler|
-|local| Submit to the brick
-|uc| Enable submission to UC targets
-|sdsc| Enable submission to SDSC/Comet
+|local| Submit to the brick|
+|uc| Enable submission to UC targets|
+|sdsc| Enable submission to SDSC/Comet|
 
 E.g: To submit to UC Sites only, put the following in the submit file:
 ```
