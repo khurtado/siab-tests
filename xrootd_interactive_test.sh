@@ -1,6 +1,7 @@
 #!/bin/bash
 
-SIAB_XROOTD_CACHE="siab-1.colorado.edu:1095"
+SIAB_XROOTD_CACHE="siab-1.colorado.edu:4095"
+#SIAB_XROOTD_CACHE="siab-1.hep.uprm.edu:4095"
 
 # First, check for proxy certificates
 if [ "x${X509_USER_PROXY}" == "x" ] && [ ! -f "/tmp/x509up_u$(id -u)" ]; then
@@ -20,10 +21,10 @@ fi
 
 echo -e "\n\n--------Starting XRootD test--------"
 echo "Command to run:"
-echo xrdfs ${SIAB_XROOTD_CACHE} stat -q IsReadable /store/mc/SAM/GenericTTbar/GEN-SIM-RECO/CMSSW_5_3_1_START53_V5-v1/0013/CE4D66EB-5AAE-E111-96D6-003048D37524.root
-XRD_LOGLEVEL="Debug" xrdfs ${SIAB_XROOTD_CACHE} stat -q IsReadable /store/mc/SAM/GenericTTbar/GEN-SIM-RECO/CMSSW_5_3_1_START53_V5-v1/0013/CE4D66EB-5AAE-E111-96D6-003048D37524.root 2>&1
-#echo -e "xrdcp -d 2 root://${SIAB_XROOTD_CACHE}//store/mc/SAM/GenericTTbar/GEN-SIM-RECO/CMSSW_5_3_1_START53_V5-v1/0013/CE4D66EB-5AAE-E111-96D6-003048D37524.root -f test.root \n"
-#xrdcp -d 2 root://${SIAB_XROOTD_CACHE}//store/mc/SAM/GenericTTbar/GEN-SIM-RECO/CMSSW_5_3_1_START53_V5-v1/0013/CE4D66EB-5AAE-E111-96D6-003048D37524.root -f test.root 2>&1
+#echo xrdfs ${SIAB_XROOTD_CACHE} stat -q IsReadable /store/mc/SAM/GenericTTbar/GEN-SIM-RECO/CMSSW_5_3_1_START53_V5-v1/0013/CE4D66EB-5AAE-E111-96D6-003048D37524.root
+#XRD_LOGLEVEL="Debug" xrdfs ${SIAB_XROOTD_CACHE} stat -q IsReadable /store/mc/SAM/GenericTTbar/GEN-SIM-RECO/CMSSW_5_3_1_START53_V5-v1/0013/CE4D66EB-5AAE-E111-96D6-003048D37524.root 2>&1
+echo -e "xrdcp -d 2 root://${SIAB_XROOTD_CACHE}//store/mc/SAM/GenericTTbar/GEN-SIM-RECO/CMSSW_5_3_1_START53_V5-v1/0013/CE4D66EB-5AAE-E111-96D6-003048D37524.root -f test.root \n"
+xrdcp -d 2 root://${SIAB_XROOTD_CACHE}//store/mc/SAM/GenericTTbar/GEN-SIM-RECO/CMSSW_5_3_1_START53_V5-v1/0013/CE4D66EB-5AAE-E111-96D6-003048D37524.root -f test.root 2>&1
 result=$?
 echo -e "--------Finishing XRootD test--------\n"
 
@@ -35,6 +36,6 @@ else
 fi
 
 # Delete root file, so we don't waste bandwidth transferring file back to the submit host
-rm test.root
+if [ -f test.root ]; then rm test.root; fi
 
 echo "Test completed!"
