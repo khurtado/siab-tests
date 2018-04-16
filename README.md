@@ -2,11 +2,23 @@
  Different tests for SiaB targets
 
 ## Interactive tests
-### xrootd\_interactive\_test.sh
-Simple test to stat an XRootD file from a given cache.  
+### xrootd\_cmsproxy_interactive\_test.sh
+Simple test to copy an XRootD file from a given cache.  
 Just change [SIAB\_XROOTD\_CACHE](https://github.com/khurtado/siab-tests/blob/master/xrootd_interactive_test.sh#L3) to the actual SiaB cache location.
 
 **Note**: This test depends on the SiaB firewall configuration. Please, make sure you can actually connect to the cache server (telnet, nmap, etc) from the machine you are testing from first.
+
+### xrootd\_server\_interactive\_test.sh
+Will test the XrootD redirector + data server service in the box.
+Usage:
+
+```
+xrootd_server_interactive.test </path/to/file/to/read>
+E.g: At Colorado:
+
+xrootd_server_interactive.test /uclhc/colorado/user/khurtado/test.txt
+```
+**Note**: The file to read has to exists in the brick in `/data/uclhc/....` for the test to work.
 
 ## Condor tests
 ### submit\_basic.jdl
